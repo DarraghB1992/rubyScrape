@@ -8,7 +8,6 @@ url = ENV['SCRAPE_URL']
 auth = {:username => username, :password => pass}
 r = HTTParty.get(url, :basic_auth => auth)
 
-
 open('testOutput.txt', 'w') { |f|
   f.puts r
 }
@@ -21,7 +20,7 @@ array_of_file = File.readlines("testOutput.txt")
 
 array_of_file.each_with_index do |item, index|
  
- if item.include?('dataSource')
+if item.include?('dataSource')
 	starting_line = index 
 	elsif item.include?('.render')
 		end_line = index 
