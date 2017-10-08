@@ -19,9 +19,8 @@ app_ids = []
 array_of_file = File.readlines("testOutput.txt") 
 
 array_of_file.each_with_index do |item, index|
- 
-if item.include?('dataSource')
-	starting_line = index 
+	if item.include?('dataSource')
+		starting_line = index 
 	elsif item.include?('.render')
 		end_line = index 
 	end
