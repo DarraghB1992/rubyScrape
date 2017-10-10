@@ -15,6 +15,8 @@ open('testOutput.txt', 'w') { |f|
 starting_line = 0
 end_line = 0
 app_ids = []
+clean_existing_app_ids = []
+
 
 array_of_file = File.readlines("testOutput.txt") 
 
@@ -53,4 +55,18 @@ for x in deeper
 	app_ids.push(clean_app_id.first)
 end
 
-puts app_ids
+existing_app_ids = File.readlines('existing_app_ids.txt')
+
+
+
+for x in existing_app_ids
+	current_app_id_cleaned = x.delete!("\n")
+	clean_existing_app_ids.push(current_app_id_cleaned)
+end
+
+
+new_app_ids =  app_ids - clean_existing_app_ids 
+
+for x in new_app_ids
+	puts x + " not on list" 
+end
